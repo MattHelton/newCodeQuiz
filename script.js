@@ -4,33 +4,42 @@ var startScreen = document.getElementById("start-screen");
 var questionsScreen = document.getElementById("example-question");
 var gameOverScreen = document.getElementById("game-over-screen");
 
+
 //data variables
-var questionsArray = [
-    "What is the name of the MLB team in Philadelphia", "Second Question", "Third Question"
+var questions = [
+    {q: "What is the name of the Philadelphia NFL team?", 
+    a:{ a: "Eagles", b: "Falcons", c: "Patriots", d: "Cardinals"}, 
+        correctAnswer: "Eagles"
+    },
+    {q: "What is the name of the Philadelphia MLB team?", 
+    a:{ a: "Red Sox", b: "Braves", c: "Phillies", d: "Tigers"}, 
+        correctAnswer: "Phillies"
+    },
+    {q: "What is the name of the Philadelphia NBA team?", 
+    a:{ a: "Suns", b: "Lakers", c: "Pistons", d: "76ers"}, 
+        correctAnswer: "76ers"
+    },
+    {q: "What is the name of the Philadelphia NHL team?", 
+    a:{ a: "Penguins", b: "Flyers", c: "Capitols", d: "Lightning"}, 
+        correctAnswer: "Flyers"
+    },
 ];
 
-startBtn.addEventListener("click", function(){
-    var btn1 = document.createElement("button"); btn1.innerHTML= "Phillies";
-    document.body.appendChild(btn1)
-    var btn2 = document.createElement("button"); btn2.innerHTML= "Eagles";
-    document.body.appendChild(btn2)
-    var btn3 = document.createElement("button"); btn3.innerHTML= "76ers";
-    document.body.appendChild(btn3)
-    var btn4 = document.createElement("button"); btn4.innerHTML= "Flyers";
-    document.body.appendChild(btn4)
+var currentQuestionIndex = 0
 
-    if(btn1 === "click"){
-        createElement("p")
-        btn1.innerHTML = "Correct"
-        document.body.appendChild(btn1)
-    }
-    
-  
+
+// startGame()
+//     renderQuestion(questions[currentQuestionIndex])
+
+
+
+startBtn.addEventListener("click", function(){
+
 
     console.log("button clicked")
     startScreen.style.display = "none"
     questionsScreen.style.display = "block";
-    questionsScreen.innerHTML = questionsArray[0]
-   
+    questionsScreen.innerHTML = questions[0]
+ 
 })
 
