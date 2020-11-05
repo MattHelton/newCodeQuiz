@@ -3,8 +3,10 @@ var startBtn = document.getElementById("start");
 var startScreen = document.getElementById("start-screen");
 var questionsScreen = document.getElementById("example-question");
 var gameOverScreen = document.getElementById("game-over-screen");
-var answers =[]
-var correctAnswer = ""
+var answers = []
+var index = 0
+var score = 0
+// var userAnswer =
 //data variables
 var questions = [
     {
@@ -29,8 +31,6 @@ var questions = [
     },
 ];
 
-var currentQuestionIndex = 0
-
 
 // startGame()
 //     renderQuestion(questions[currentQuestionIndex])
@@ -43,20 +43,49 @@ startBtn.addEventListener("click", function () {
     console.log("button clicked")
     startScreen.style.display = "none"
     questionsScreen.style.display = "block";
-    questionsScreen.innerHTML = questions[0].q
+    questionsScreen.innerHTML = questions[index].q
     //display the answer buttons
     //how do we create our html buttons dynamically using javascript
     // questionsScreen.textContent = questions[0].answers
 
-    for (var i = 0; i < questions[0].answers.length; i++) {
-        console.log(questions[0].answers[i])
+    for (var i = 0; i < questions[index].answers.length; i++) {
         var answerButton = document.createElement("BUTTON");
-        answerButton.innerHTML = questions[0].answers[i];
+        answerButton.innerHTML = questions[index].answers[i];
+        answerButton.setAttribute("value", questions[index].answers[i])
         questionsScreen.appendChild(answerButton)
-    }
-    if (questions === correctAnswer){
-        console.log("it worked")
-    }
+    } document.addEventListener("click", (function (event) {
+        console.log(event.target.value)
+        if (event.target.value === questions[index].correctAnswer) {
+            console.log("correct")
+            score++
+            console.log(score)
+        }
+        else if(event.target.value !== questions[index].correctAnswer){
+            console.log("incorrect")
+            
+        }
+    }))
+
+
+
+
+
+
+
+
+
+    // for (var i = 0; i < questions.length; i++) {
+    //     console.log(questions[i])
+    //     for (var j = 0; j < questions[i].answers.length; j++){
+    //         var answerButton = document.createElement("BUTTON");
+    //     answerButton.innerHTML = questions[i].answers[j];
+    //     questionsScreen.appendChild(answerButton)
+    // }
+    //     }
+
+    // if (userAnswer === questions[i].correctAnswer){
+    //     console.log("it worked")
+    // }
 })
 //step1 addeventlistener to button that checks if answer is correct or wrong
 //step2 figure out a way to take me to the next question
