@@ -56,6 +56,8 @@ startBtn.addEventListener("click", function () {
     } document.addEventListener("click", (function (event) {
         console.log(event.target.value)
         if (event.target.value === questions[index].correctAnswer) {
+            questionsScreen.style.display = "none";
+            // questionsScreen.style.display = "block";
             console.log("correct")
             score++
             console.log(score)
@@ -65,6 +67,8 @@ startBtn.addEventListener("click", function () {
             
         }
     }))
+    
+})
 
 
 
@@ -81,12 +85,12 @@ startBtn.addEventListener("click", function () {
     //     answerButton.innerHTML = questions[i].answers[j];
     //     questionsScreen.appendChild(answerButton)
     // }
-    //     }
+    //     
 
     // if (userAnswer === questions[i].correctAnswer){
     //     console.log("it worked")
     // }
-})
+
 //step1 addeventlistener to button that checks if answer is correct or wrong
 //step2 figure out a way to take me to the next question
 //one solution might be to check the current question when start or an answer button is clicked and move to the next question.
